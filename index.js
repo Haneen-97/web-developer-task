@@ -1,4 +1,29 @@
 // TODO: Create a function to add books
+addBook()
+function addBook(){
+
+    $("#form-n").on("submit", (e) => {
+        e.preventDefault()
+    axios({
+        method: 'POST',
+        url: 'https://61067a051f3487001743792a.mockapi.io/api/v1/Books',
+        data: {
+            title: $("#title").val(),
+            subtitle: $("#subtitle").val(),
+            author: $("#author").val(),
+            image: $("#image").val(),
+        }
+      })
+        .then( res => {
+            alert(`book ${$("#title").val()} added successfully`)
+            window.location.reload(); 
+    
+        }).catch(err => {
+            console.log(err)
+        
+        })
+    })
+}
 
 // TODO: Create a function to view all books 
 
