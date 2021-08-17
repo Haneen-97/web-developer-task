@@ -13,10 +13,12 @@ function addBook(){
         }
       })
         .then( res => {
+             // handle success
             alert(`book ${$("#title").val()} added successfully`)
             window.location.reload(); 
     
         }).catch(err => {
+             // handle error
             console.log(err)
         
         })
@@ -30,7 +32,9 @@ axios({
     method: 'get',
   })
   
-  .then((response) => {    
+  .then((response) => {  
+    // handle success  
+    // condition to check if there is a data then show the table
     if(response.data.length>0){
         $('#table').append(`
         <thead >
@@ -43,16 +47,19 @@ axios({
         <th scope="col">Action</th>
         </tr>
       </thead>
-      <tbody id="bookList"></tbody>`
-      )
-        for (i in response.data) {  
+      <tbody id="bookList"></tbody>`)
+      // loop through data array
+        for (i in response.data) { 
+            // function call to show data 
             bookListData(response.data[i])
         }
+        // else if there is no data 
     }else{
         $('#table').append(`<h1 align="center">Nothing to show, please add a book</h1>`);
     }
   }) 
   .catch((error)=>{
+       // handle error
       console.log(error)
   }) 
 }
@@ -78,10 +85,12 @@ function deleteBook(id){
         method: 'delete',
       })
       .then((response) => {
+           // handle success
          window.location.reload(); 
          alert(`book ${id} deleted successfully`)
       }) 
       .catch((error)=>{
+           // handle error
           console.log(error)
       }) 
 }
