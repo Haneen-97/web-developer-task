@@ -40,3 +40,17 @@ axios({
   }
 
 // TODO: Create a function to delete a book 
+function deleteBook(id){
+    axios({
+        url: 'https://61067a051f3487001743792a.mockapi.io/api/v1/Books/'+id,
+        method: 'delete',
+      })
+      .then((response) => {
+         window.location.reload(); 
+         alert(`book ${id} deleted successfully`)
+       
+      }) 
+      .catch((error)=>{
+          console.log(error)
+      }) 
+}
